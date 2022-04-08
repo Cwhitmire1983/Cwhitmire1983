@@ -1,0 +1,29 @@
+from socket import *
+import time
+import datetime as dt
+
+current_datetime = dt.datetime.now()
+print(current_datetime)
+
+startTime = time.time()
+if __name__ == '__main__':
+    target = input('Enter the host to be scanned: ')
+    t_IP = gethostbyname(target)
+    print('Starting scan on host: ', t_IP)
+def pscan(port):
+    try:
+        s.connect((t_IP,port))
+        return True
+    except:
+        return False
+
+for i in range(1, 1025):
+    if pscan(i):
+        print('Port',i,'is open')
+    else:
+        print('Port',i,'is closed')
+
+
+print('Time taken:', time.time() - startTime)
+current_datetime = dt.datetime.now()
+print(current_datetime)
